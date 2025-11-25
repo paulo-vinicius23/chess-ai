@@ -1,0 +1,61 @@
+/* Fundo geral */
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: #022b42; /* azul ciano escuro */
+  padding-top: 1px;
+}
+
+body {
+  margin: 0;
+  background: #06283D; /* azul ciano escuro bonito */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+chess-board {
+  width: 520px;
+  height: 520px;
+  border-radius: 10px;
+  background: #071e29;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+/* Fundo geral */
+.page {
+  background-color: #032b44; /* azul ciano escuro */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Título */
+.title {
+  font-size: 60px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 25px;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: 2px;
+}
+
+/* Container do tabuleiro */
+.board-wrapper {
+  padding: 15px;              /* espaço entre tabuleiro e borda */
+  background: black;          /* borda preta */
+  border-radius: 12px;        /* borda arredondada */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Caso o board tenha um canvas ou div interna */
+.board-container > * {
+  display: block;
+}
