@@ -1,13 +1,16 @@
 <div class="page">
   <h1 class="title">Chess.ia</h1>
-  
+
+  <div id="error-box" class="hidden"></div>
+
   <div class="board-container">
-    <chess-board 
-      style="width: 1200px; height: 1200px;"
-      position="start" 
-      draggable-pieces="true">
+    <chess-board
+      #boardElement
+      id="board"
+      style="width: 1115px; height: 1115px;"
+      position="start"
+      draggable-pieces="true"
+      (drop)="onDrop($event)">
     </chess-board>
   </div>
 </div>
-
-

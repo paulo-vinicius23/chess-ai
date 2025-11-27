@@ -37,6 +37,20 @@ chess-board {
   align-items: center;
 }
 
+#error-box {
+  background: #ff4d4d;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Título */
 .title {
   font-size: 60px;
