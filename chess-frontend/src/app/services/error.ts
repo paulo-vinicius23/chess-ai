@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ErrorService {
+  private msgSubject = new BehaviorSubject<string | null>(null);
+  message$ = this.msgSubject.asObservable();
 
-  show(message: string) {
-    const box = document.getElementById('error-box');
-    if (!box) return;
+  show(msg: string) {
+    this.msgSubject.next(msg);
 
-    box.textContent = message;
-    box.classList.remove('hidden');
-
-    // esconder depois de 3 segundos
     setTimeout(() => {
-      box.classList.add('hidden');
-    }, 3000);
+      this.msgSubject.next(null);
+    }, 1500);
   }
 }
