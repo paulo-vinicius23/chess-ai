@@ -108,26 +108,38 @@ export class ChessboardComponent implements AfterViewInit, OnDestroy {
 
     try {
       const move = this.game.move({ from, to, promotion: "q" });
-      
-      if (move) {
-        this.errorService.show(null as any);
-        this.syncBoard();
-    
-        if (this.game.isCheckmate()) {
-          this.showError("Cheque-mate!");
-          setTimeout(() => {
-            this.game.reset();
-            this.syncBoard();
-          }, 1200);
-        }
+
+      // Se o movimento foi inválido → move == null
+      if (!move) {
+        this.handleInvalidMove(e);
         return;
       }
 
-      // Jogada inválida → mostra erro e cancela
-      this.handleInvalidMove(e);
+      // Movimento válido → limpa erro e sincroniza
+      this.errorService.show(null as any);
+      this.syncBoard();
 
-    } catch {
+      // Agora sim pode verificar fim de jogo
+      if (this.game.isCheckmate()) {
+        this.showError("Cheque-mate!");
+        setTimeout(() => {
+          this.game.reset();
+          this.syncBoard();
+        }, 1200);
+      } else if (this.game.isDraw()) {
+        this.showError("Empate!");
+        setTimeout(() => {
+          this.game.reset();
+          this.syncBoard();
+        }, 1200);
+      }
+
+      return;
+
+    } catch (err) {
+      console.warn('[onDropNative] exception', err);
       this.handleInvalidMove(e);
+      return;
     }
   }
 
